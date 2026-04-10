@@ -6,6 +6,7 @@ import "./App.css";
 import NavBar from "./components/NavBar";
 
 // Pages
+import About from "./pages/About";               // ✅ import About page
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import Jobs from "./pages/Jobs";
@@ -46,10 +47,16 @@ function App() {
       {user && <NavBar />}
 
       <Routes>
-        {/* ✅ Public Routes – only for unauthenticated users */}
-        <Route path="/" element={!user ? <SignUp /> : <Navigate to={role === "client" ? "/client-home" : "/student-home"} replace />} />
-        <Route path="/signin" element={!user ? <SignIn /> : <Navigate to={role === "client" ? "/client-home" : "/student-home"} replace />} />
-        <Route path="/signup" element={!user ? <SignUp /> : <Navigate to={role === "client" ? "/client-home" : "/student-home"} replace />} />
+        {/* 🌟 Public Routes – About page is the first landing */}
+        <Route path="/" element={<About />} />   {/* ✅ About page as root */}
+        <Route
+          path="/signup"
+          element={!user ? <SignUp /> : <Navigate to={role === "client" ? "/client-home" : "/student-home"} replace />}
+        />
+        <Route
+          path="/signin"
+          element={!user ? <SignIn /> : <Navigate to={role === "client" ? "/client-home" : "/student-home"} replace />}
+        />
 
         {/* 🔒 Protected Routes (authenticated only) */}
         {/* Common */}
