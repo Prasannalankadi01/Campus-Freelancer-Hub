@@ -1,0 +1,607 @@
+/* ================= MY BIDS PAGE ================= */
+.my-bids-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: calc(70px + 40px) 40px 60px 40px;
+  transition: all 0.3s;
+}
+
+/* Dark mode for container */
+body.dark .my-bids-container {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+.my-bids-header {
+  text-align: center;
+  margin-bottom: 40px;
+  animation: fadeInDown 0.5s ease;
+}
+
+.my-bids-header h1 {
+  font-size: 42px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #1e293b, #3b82f6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 12px;
+}
+
+/* Dark mode for header h1 */
+body.dark .my-bids-header h1 {
+  background: linear-gradient(135deg, #f1f5f9, #60a5fa);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.my-bids-header p {
+  font-size: 16px;
+  color: #64748b;
+}
+
+/* Dark mode for header p */
+body.dark .my-bids-header p {
+  color: #94a3b8;
+}
+
+/* Filter Tabs */
+.bid-filters {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.bid-filters button {
+  padding: 12px 24px;
+  background: white;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s;
+  color: #64748b;
+}
+
+/* Dark mode for filter buttons */
+body.dark .bid-filters button {
+  background: #1e293b;
+  border-color: #334155;
+  color: #94a3b8;
+}
+
+.bid-filters button:hover {
+  border-color: #667eea;
+  color: #667eea;
+  transform: translateY(-2px);
+}
+
+body.dark .bid-filters button:hover {
+  border-color: #667eea;
+  color: #a78bfa;
+}
+
+.bid-filters button.active {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-color: transparent;
+  color: white;
+}
+
+/* Bids Grid */
+.bids-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 30px;
+}
+
+/* Modern Bid Card */
+.bid-card-modern {
+  background: white;
+  border-radius: 24px;
+  padding: 24px;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  animation: fadeInUp 0.5s ease backwards;
+}
+
+/* Dark mode for bid card */
+body.dark .bid-card-modern {
+  background: #1e293b;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.bid-card-modern:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+body.dark .bid-card-modern:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.bid-status-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.bid-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.bid-icon {
+  font-size: 48px;
+}
+
+.bid-info {
+  flex: 1;
+}
+
+.bid-info h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 4px 0;
+}
+
+/* Dark mode for bid title */
+body.dark .bid-info h3 {
+  color: #f1f5f9;
+}
+
+.bid-job-id {
+  font-size: 12px;
+  color: #94a3b8;
+  margin: 0;
+}
+
+/* Dark mode for job id */
+body.dark .bid-job-id {
+  color: #64748b;
+}
+
+.bid-details {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-top: 1px solid #f1f5f9;
+  border-bottom: 1px solid #f1f5f9;
+  margin-bottom: 16px;
+}
+
+/* Dark mode for borders */
+body.dark .bid-details {
+  border-top-color: #334155;
+  border-bottom-color: #334155;
+}
+
+.bid-detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.bid-detail-item .detail-label {
+  font-size: 12px;
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+/* Dark mode for label */
+body.dark .bid-detail-item .detail-label {
+  color: #64748b;
+}
+
+.detail-amount {
+  font-size: 24px;
+  font-weight: 800;
+  color: #10b981;
+}
+
+.detail-date {
+  font-size: 14px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* Dark mode for date */
+body.dark .detail-date {
+  color: #94a3b8;
+}
+
+.bid-message {
+  background: #f8fafc;
+  padding: 12px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+/* Dark mode for message box */
+body.dark .bid-message {
+  background: #0f172a;
+}
+
+.bid-message p {
+  margin: 0;
+  font-size: 14px;
+  color: #475569;
+}
+
+/* Dark mode for message text */
+body.dark .bid-message p {
+  color: #cbd5e1;
+}
+
+.bid-footer {
+  margin-top: 16px;
+}
+
+.success-message {
+  background: #d1fae5;
+  color: #065f46;
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Dark mode for success message */
+body.dark .success-message {
+  background: #064e3b;
+  color: #34d399;
+}
+
+.reject-message {
+  background: #fee2e2;
+  color: #991b1b;
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Dark mode for reject message */
+body.dark .reject-message {
+  background: #7f1d1d;
+  color: #fca5a5;
+}
+
+.pending-message {
+  background: #fef3c7;
+  color: #92400e;
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+/* Dark mode for pending message */
+body.dark .pending-message {
+  background: #451a03;
+  color: #fbbf24;
+}
+
+/* Delete Button */
+.delete-bid-btn {
+  width: 100%;
+  padding: 10px;
+  background: #fee2e2;
+  color: #dc2626;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.delete-bid-btn:hover {
+  background: #fecaca;
+  transform: translateY(-2px);
+}
+
+/* Dark mode for delete button */
+body.dark .delete-bid-btn {
+  background: #7f1d1d;
+  color: #fca5a5;
+}
+
+body.dark .delete-bid-btn:hover {
+  background: #991b1b;
+}
+
+/* No Bids State */
+.no-bids-container {
+  text-align: center;
+  padding: 80px 40px;
+  background: white;
+  border-radius: 24px;
+  margin-top: 40px;
+}
+
+/* Dark mode for no bids container */
+body.dark .no-bids-container {
+  background: #1e293b;
+}
+
+.no-bids-icon {
+  font-size: 80px;
+  margin-bottom: 20px;
+}
+
+.no-bids-container h3 {
+  font-size: 28px;
+  color: #1e293b;
+  margin-bottom: 12px;
+}
+
+/* Dark mode for no bids heading */
+body.dark .no-bids-container h3 {
+  color: #f1f5f9;
+}
+
+.no-bids-container p {
+  color: #64748b;
+  margin-bottom: 30px;
+}
+
+/* Dark mode for no bids text */
+body.dark .no-bids-container p {
+  color: #94a3b8;
+}
+
+.browse-jobs-btn {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.browse-jobs-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* Loading State */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: 20px;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #e2e8f0;
+  border-top-color: #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Dark mode for spinner */
+body.dark .spinner {
+  border-color: #334155;
+  border-top-color: #667eea;
+}
+
+.loading-container p {
+  color: #64748b;
+}
+
+body.dark .loading-container p {
+  color: #94a3b8;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 24px;
+  padding: 32px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  animation: slideUp 0.3s ease;
+}
+
+/* Dark mode for modal */
+body.dark .modal-content {
+  background: #1e293b;
+}
+
+.modal-content h3 {
+  font-size: 24px;
+  margin-bottom: 16px;
+  color: #1e293b;
+}
+
+body.dark .modal-content h3 {
+  color: #f1f5f9;
+}
+
+.modal-content p {
+  color: #64748b;
+  margin-bottom: 16px;
+}
+
+body.dark .modal-content p {
+  color: #94a3b8;
+}
+
+.warning-text {
+  color: #ef4444;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.modal-cancel-btn {
+  padding: 10px 20px;
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #64748b;
+}
+
+body.dark .modal-cancel-btn {
+  background: #0f172a;
+  border-color: #334155;
+  color: #94a3b8;
+}
+
+.modal-delete-btn {
+  padding: 10px 20px;
+  background: #ef4444;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.modal-delete-btn:hover:not(:disabled) {
+  background: #dc2626;
+  transform: translateY(-2px);
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .my-bids-container {
+    padding: calc(70px + 20px) 20px 40px 20px;
+  }
+  
+  .my-bids-header h1 {
+    font-size: 32px;
+  }
+  
+  .bid-filters {
+    gap: 10px;
+  }
+  
+  .bid-filters button {
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+  
+  .bids-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .bid-details {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .my-bids-container {
+    padding: calc(70px + 15px) 15px 30px 15px;
+  }
+  
+  .bid-card-modern {
+    padding: 16px;
+  }
+  
+  .bid-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .bid-status-badge {
+    position: relative;
+    top: auto;
+    right: auto;
+    display: inline-block;
+    margin-bottom: 16px;
+  }
+}

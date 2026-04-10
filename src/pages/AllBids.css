@@ -1,0 +1,579 @@
+/* src/pages/AllBids.css */
+.all-bids-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: calc(70px + 40px) 40px 60px 40px;
+}
+
+body.dark .all-bids-container {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+.all-bids-content {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.all-bids-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.all-bids-header h1 {
+  font-size: 42px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #1e293b, #3b82f6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 12px;
+}
+
+body.dark .all-bids-header h1 {
+  background: linear-gradient(135deg, #f1f5f9, #60a5fa);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.all-bids-header p {
+  font-size: 16px;
+  color: #64748b;
+}
+
+/* Stats Cards */
+.stats-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.stat-card {
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s;
+}
+
+body.dark .stat-card {
+  background: #1e293b;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.stat-card.total { border-left: 4px solid #667eea; }
+.stat-card.pending { border-left: 4px solid #f59e0b; }
+.stat-card.accepted { border-left: 4px solid #10b981; }
+.stat-card.rejected { border-left: 4px solid #ef4444; }
+
+.stat-icon {
+  font-size: 40px;
+}
+
+.stat-info h3 {
+  font-size: 28px;
+  font-weight: 800;
+  margin: 0 0 4px 0;
+  color: #1e293b;
+}
+
+body.dark .stat-info h3 {
+  color: #f1f5f9;
+}
+
+.stat-info p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* Filters Section */
+.filters-section {
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  margin-bottom: 30px;
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+body.dark .filters-section {
+  background: #1e293b;
+}
+
+.filter-group {
+  flex: 1;
+}
+
+.filter-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 8px;
+}
+
+body.dark .filter-group label {
+  color: #e2e8f0;
+}
+
+.filter-group select {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  background: white;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+body.dark .filter-group select {
+  background: #0f172a;
+  border-color: #334155;
+  color: #f1f5f9;
+}
+
+.status-filters {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.status-filters button {
+  padding: 8px 20px;
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+body.dark .status-filters button {
+  background: #0f172a;
+  border-color: #334155;
+  color: #94a3b8;
+}
+
+.status-filters button.active {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-color: transparent;
+  color: white;
+}
+
+/* Bids Table */
+.bids-table-container {
+  background: white;
+  border-radius: 20px;
+  overflow-x: auto;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+body.dark .bids-table-container {
+  background: #1e293b;
+}
+
+.bids-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.bids-table th {
+  text-align: left;
+  padding: 16px 20px;
+  background: #f8fafc;
+  font-weight: 700;
+  color: #1e293b;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+body.dark .bids-table th {
+  background: #0f172a;
+  color: #f1f5f9;
+  border-bottom-color: #334155;
+}
+
+.bids-table td {
+  padding: 16px 20px;
+  border-bottom: 1px solid #e2e8f0;
+  color: #475569;
+}
+
+body.dark .bids-table td {
+  border-bottom-color: #334155;
+  color: #cbd5e1;
+}
+
+.bid-row:hover {
+  background: #f8fafc;
+}
+
+body.dark .bid-row:hover {
+  background: #0f172a;
+}
+
+.bid-row.accepted {
+  background: #d1fae520;
+}
+
+.bid-row.rejected {
+  background: #fee2e220;
+}
+
+.bid-amount {
+  font-weight: 700;
+  color: #10b981;
+  font-size: 18px;
+}
+
+.bid-message-cell {
+  max-width: 250px;
+}
+
+.message-preview {
+  cursor: pointer;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.status-badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.accept-btn, .reject-btn {
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 12px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s;
+}
+
+.accept-btn {
+  background: #10b981;
+  color: white;
+}
+
+.accept-btn:hover {
+  background: #059669;
+  transform: translateY(-1px);
+}
+
+.reject-btn {
+  background: #ef4444;
+  color: white;
+}
+
+.reject-btn:hover {
+  background: #dc2626;
+  transform: translateY(-1px);
+}
+
+.accepted-label, .rejected-label {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.accepted-label {
+  color: #10b981;
+}
+
+.rejected-label {
+  color: #ef4444;
+}
+
+/* No Bids */
+.no-bids {
+  text-align: center;
+  padding: 80px 40px;
+  background: white;
+  border-radius: 20px;
+}
+
+body.dark .no-bids {
+  background: #1e293b;
+}
+
+.no-bids-icon {
+  font-size: 80px;
+  margin-bottom: 20px;
+}
+
+.no-bids h3 {
+  font-size: 24px;
+  color: #1e293b;
+  margin-bottom: 12px;
+}
+
+body.dark .no-bids h3 {
+  color: #f1f5f9;
+}
+
+.no-bids p {
+  color: #64748b;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 24px;
+  padding: 32px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+}
+
+body.dark .modal-content {
+  background: #1e293b;
+}
+
+.modal-content h3 {
+  font-size: 24px;
+  margin-bottom: 16px;
+  color: #1e293b;
+}
+
+body.dark .modal-content h3 {
+  color: #f1f5f9;
+}
+
+.modal-content p {
+  color: #64748b;
+  margin-bottom: 24px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.modal-cancel-btn {
+  padding: 10px 20px;
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.modal-accepted-btn {
+  padding: 10px 20px;
+  background: #10b981;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+}
+
+.modal-rejected-btn {
+  padding: 10px 20px;
+  background: #ef4444;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+}
+
+/* Loading */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: 20px;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #e2e8f0;
+  border-top-color: #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .stats-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .all-bids-container {
+    padding: calc(70px + 20px) 20px 40px 20px;
+  }
+  
+  .stats-cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .filters-section {
+    flex-direction: column;
+  }
+  
+  .bids-table th, .bids-table td {
+    padding: 12px;
+    font-size: 13px;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+  }
+}
+/* ========== BASE STYLES (existing) ========== */
+.all-bids-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: calc(70px + 40px) 40px 60px 40px;
+}
+body.dark .all-bids-container {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+/* ... other existing styles ... */
+
+/* ========== RESPONSIVE TABLE (Mobile) ========== */
+@media (max-width: 768px) {
+  .all-bids-container {
+    padding: calc(70px + 20px) 20px 40px 20px;
+  }
+  
+  /* Make table horizontally scrollable */
+  .bids-table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .bids-table {
+    min-width: 700px;  /* forces scroll on small screens */
+  }
+  
+  /* Or convert table to cards on very small screens (optional) */
+  @media (max-width: 640px) {
+    .bids-table,
+    .bids-table thead,
+    .bids-table tbody,
+    .bids-table th,
+    .bids-table td,
+    .bids-table tr {
+      display: block;
+    }
+    
+    .bids-table thead {
+      display: none; /* hide headers */
+    }
+    
+    .bids-table tr {
+      margin-bottom: 20px;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      background: white;
+      padding: 16px;
+    }
+    body.dark .bids-table tr {
+      background: #1e293b;
+      border-color: #334155;
+    }
+    
+    .bids-table td {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid #e2e8f0;
+      gap: 12px;
+    }
+    body.dark .bids-table td {
+      border-bottom-color: #334155;
+    }
+    
+    .bids-table td:last-child {
+      border-bottom: none;
+    }
+    
+    .bids-table td::before {
+      content: attr(data-label);
+      font-weight: 700;
+      color: #1e293b;
+      width: 40%;
+      font-size: 13px;
+    }
+    body.dark .bids-table td::before {
+      color: #f1f5f9;
+    }
+    
+    /* Adjust action buttons inside card */
+    .action-buttons {
+      flex-direction: row;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+  }
+}
+
+/* ========== STATS CARDS RESPONSIVE ========== */
+@media (max-width: 1024px) {
+  .stats-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+@media (max-width: 640px) {
+  .stats-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========== FILTERS RESPONSIVE ========== */
+@media (max-width: 768px) {
+  .filters-section {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .filter-group {
+    width: 100%;
+  }
+  .status-filters {
+    flex-wrap: wrap;
+  }
+  .status-filters button {
+    flex: 1;
+    text-align: center;
+  }
+}

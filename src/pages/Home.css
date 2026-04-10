@@ -1,0 +1,136 @@
+/* GLOBAL */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: #f5f8ff;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 60px;
+  background: linear-gradient(90deg, #0f2c67, #1c4ed8);
+  color: white;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+}
+
+.nav-links li {
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.nav-links li:hover {
+  color: #ffd700;
+}
+
+.nav-buttons button {
+  margin-left: 10px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.login-btn {
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+}
+
+.signup-btn {
+  background: #ffd700;
+  color: black;
+  font-weight: bold;
+}
+
+/* HERO */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 80px 60px;
+}
+
+/* LEFT */
+.hero-left h1 {
+  font-size: 48px;
+  color: #0f2c67;
+}
+
+.hero-left span {
+  color: #1c4ed8;
+}
+
+.hero-left p {
+  margin: 20px 0;
+  color: #555;
+  font-size: 18px;
+}
+
+/* BUTTON */
+.browse-btn {
+  padding: 12px 25px;
+  border-radius: 25px;
+  border: none;
+  background: #1c4ed8;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.browse-btn:hover {
+  background: #0f2c67;
+}
+
+/* RIGHT IMAGE */
+.hero-right img {
+  width: 400px;
+}
+
+/* DASHBOARD */
+.dashboard-container {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.dashboard-btn {
+  padding: 12px 25px;
+  border-radius: 25px;
+  border: none;
+  background: #ffd700;
+  font-weight: bold;
+  cursor: pointer;
+}
+.home {
+  position: relative;
+  overflow: hidden;
+}
+
+/* background circle */
+.home::before {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: #e0e7ff;
+  border-radius: 50%;
+  top: -100px;
+  right: -150px;
+  z-index: -1;
+}
+.home {
+  margin-top: 80px;   /* adjust based on navbar height */
+}

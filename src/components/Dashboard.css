@@ -1,0 +1,346 @@
+/* ================= RESET & VARIABLES ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Dark mode colors (default) */
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --card-bg: #1e293b;
+  --sidebar-bg: linear-gradient(180deg, #0f2c67, #1c4ed8);
+  --border-color: #334155;
+}
+
+/* Light mode colors */
+body:not(.dark) {
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --card-bg: #ffffff;
+  --sidebar-bg: #ffffff;
+  --border-color: #e2e8f0;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* ================= DASHBOARD LAYOUT ================= */
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+/* ================= SIDEBAR ================= */
+.sidebar {
+  width: 260px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: var(--sidebar-bg);
+  color: var(--text-primary);
+  padding: 20px 16px;
+  transition: all 0.3s ease-in-out;
+  z-index: 1000;
+  overflow-y: auto;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Light mode sidebar */
+body:not(.dark) .sidebar {
+  background: var(--sidebar-bg);
+  border-right: 1px solid var(--border-color);
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Collapsed sidebar */
+.sidebar.collapsed {
+  width: 80px;
+  padding: 20px 12px;
+}
+
+/* Sidebar logo */
+.sidebar-logo {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 8px;
+  white-space: nowrap;
+}
+
+.sidebar.collapsed .sidebar-logo span {
+  display: none;
+}
+
+/* Toggle button */
+.toggle-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: var(--text-primary);
+  font-size: 20px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 8px;
+  width: 100%;
+  margin-bottom: 20px;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+body:not(.dark) .toggle-btn {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+body:not(.dark) .toggle-btn:hover {
+  background: #e2e8f0;
+}
+
+/* Sidebar menu */
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-menu li {
+  padding: 12px;
+  margin-bottom: 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  white-space: nowrap;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.sidebar-menu li:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+body:not(.dark) .sidebar-menu li:hover {
+  background: #f1f5f9;
+}
+
+.sidebar-menu .active {
+  background: white;
+  color: #1c4ed8;
+  font-weight: bold;
+}
+
+body:not(.dark) .sidebar-menu .active {
+  background: #1c4ed8;
+  color: white;
+}
+
+/* Center icons when collapsed */
+.sidebar.collapsed .sidebar-menu li {
+  justify-content: center;
+  padding: 12px 8px;
+}
+
+.sidebar.collapsed .sidebar-menu li span:first-child {
+  font-size: 20px;
+}
+
+.sidebar.collapsed .sidebar-menu li span:not(:first-child) {
+  display: none;
+}
+
+/* ================= MAIN CONTENT ================= */
+.dashboard-main {
+  flex: 1;
+  margin-left: 260px;
+  padding: 24px 32px;
+  transition: all 0.3s ease-in-out;
+  width: calc(100% - 260px);
+  min-height: 100vh;
+  background: var(--bg-primary);
+}
+
+/* When sidebar is collapsed */
+.dashboard-main.expanded {
+  margin-left: 80px;
+  width: calc(100% - 80px);
+}
+
+/* Welcome section */
+.dashboard-main h2 {
+  font-size: 28px;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+
+.dashboard-main p {
+  color: var(--text-secondary);
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+
+/* ================= CARDS ================= */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.home-card {
+  padding: 24px 20px;
+  border-radius: 16px;
+  background: var(--card-bg);
+  color: var(--text-primary);
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 1px solid var(--border-color);
+}
+
+.home-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.home-card h4 {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+  color: var(--text-secondary);
+}
+
+.home-card h2 {
+  font-size: 36px;
+  font-weight: bold;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.home-card h5 {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: var(--text-primary);
+}
+
+/* ================= CHARTS ================= */
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+/* Chart container styling */
+.charts-grid .home-card {
+  padding: 20px;
+}
+
+.charts-grid canvas {
+  max-height: 300px;
+  width: 100% !important;
+}
+
+/* ================= SCROLLBAR ================= */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #64748b;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* ================= MOBILE RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+    position: fixed;
+    z-index: 1100;
+  }
+
+  .sidebar.collapsed {
+    transform: translateX(-100%);
+    width: 260px;
+  }
+
+  .sidebar.mobile-open {
+    transform: translateX(0);
+  }
+
+  .dashboard-main {
+    margin-left: 0 !important;
+    width: 100% !important;
+    padding: 20px 16px;
+  }
+
+  .cards-container {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-card h2 {
+    font-size: 28px;
+  }
+}
+
+/* ================= ANIMATIONS ================= */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.home-card {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.home-card:nth-child(1) { animation-delay: 0.1s; }
+.home-card:nth-child(2) { animation-delay: 0.2s; }
+.home-card:nth-child(3) { animation-delay: 0.3s; }
+.home-card:nth-child(4) { animation-delay: 0.4s; }

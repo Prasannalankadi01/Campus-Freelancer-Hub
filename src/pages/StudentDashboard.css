@@ -1,0 +1,509 @@
+/* ================= STUDENT DASHBOARD ================= */
+.student-dashboard {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: calc(70px + 40px) 40px 60px 40px;
+}
+
+/* Dark mode */
+body.dark .student-dashboard {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+.dashboard-content {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* ================= WELCOME SECTION ================= */
+.welcome-section {
+  margin-bottom: 40px;
+  animation: fadeInDown 0.5s ease;
+}
+
+.welcome-section h1 {
+  font-size: 32px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #1e293b, #3b82f6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 8px;
+}
+
+body.dark .welcome-section h1 {
+  background: linear-gradient(135deg, #f1f5f9, #60a5fa);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.welcome-section p {
+  font-size: 16px;
+  color: #64748b;
+}
+
+body.dark .welcome-section p {
+  color: #94a3b8;
+}
+
+/* ================= STATS CARDS - IMPROVED VISIBILITY ================= */
+/* ================= STATS CARDS - DARK TEXT ================= */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.stat-card {
+  position: relative;
+  border-radius: 28px;
+  padding: 24px 20px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Lighter gradient backgrounds for dark text */
+.stat-card:nth-child(1) {
+  background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+}
+.stat-card:nth-child(2) {
+  background: linear-gradient(135deg, #fed7aa 0%, #fdba74 100%);
+}
+.stat-card:nth-child(3) {
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+}
+.stat-card:nth-child(4) {
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+}
+
+/* Optional: add a subtle border */
+.stat-card {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Animated shine effect */
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.6s ease;
+  z-index: 0;
+}
+
+.stat-card:hover::before {
+  left: 100%;
+}
+
+.stat-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.15);
+}
+
+/* Icon styling */
+.stat-icon {
+  font-size: 48px;
+  filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.1));
+  transition: transform 0.3s ease;
+  animation: softPulse 0.6s ease-out;
+  z-index: 1;
+  position: relative;
+}
+
+.stat-card:hover .stat-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Text container - DARK TEXT */
+.stat-info {
+  flex: 1;
+  z-index: 1;
+  position: relative;
+}
+
+.stat-info h3 {
+  font-size: 34px;
+  font-weight: 800;
+  margin: 0 0 6px 0;
+  color: #1e293b;  /* dark text */
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+
+.stat-info p {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0;
+  color: #475569;  /* slightly lighter dark text */
+  letter-spacing: 0.3px;
+}
+
+/* Pulse animation */
+@keyframes softPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Dark mode (optional: keep same light gradients but adjust text) */
+body.dark .stat-card:nth-child(1) {
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+}
+body.dark .stat-card:nth-child(2) {
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+}
+body.dark .stat-card:nth-child(3) {
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+}
+body.dark .stat-card:nth-child(4) {
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+}
+body.dark .stat-info h3 {
+  color: #f1f5f9;
+}
+body.dark .stat-info p {
+  color: #cbd5e1;
+}
+/* ================= SECTIONS (Recent Bids & Available Jobs) ================= */
+.section {
+  margin-bottom: 48px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.section-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+}
+
+body.dark .section-header h2 {
+  color: #f1f5f9;
+}
+
+.view-all-btn {
+  background: none;
+  border: none;
+  color: #667eea;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 14px;
+}
+
+.view-all-btn:hover {
+  transform: translateX(5px);
+  color: #764ba2;
+}
+
+/* ================= BIDS LIST ================= */
+.bids-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bid-item {
+  background: white;
+  border-radius: 16px;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+body.dark .bid-item {
+  background: #1e293b;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.bid-item:hover {
+  transform: translateX(5px);
+}
+
+.bid-info h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 4px 0;
+}
+
+body.dark .bid-info h4 {
+  color: #f1f5f9;
+}
+
+.bid-info p {
+  font-size: 14px;
+  font-weight: 600;
+  color: #10b981;
+  margin: 0;
+}
+
+.bid-status {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: #f8fafc;
+}
+
+body.dark .bid-status {
+  background: #0f172a;
+}
+
+/* ================= JOBS GRID ================= */
+.jobs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+/* Job Card */
+.job-card {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  position: relative;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+body.dark .job-card {
+  background: #1e293b;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.job-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.job-card-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
+.badge-open {
+  background: #d1fae5;
+  color: #065f46;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.job-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.job-icon {
+  font-size: 36px;
+}
+
+.job-card-header h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+  flex: 1;
+}
+
+body.dark .job-card-header h4 {
+  color: #f1f5f9;
+}
+
+.job-desc {
+  font-size: 13px;
+  color: #64748b;
+  line-height: 1.5;
+  margin-bottom: 16px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+body.dark .job-desc {
+  color: #cbd5e1;
+}
+
+.job-price {
+  font-size: 20px;
+  font-weight: 800;
+  color: #10b981;
+  margin-bottom: 16px;
+}
+
+.bid-btn {
+  width: 100%;
+  padding: 10px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.bid-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+/* ================= EMPTY STATE ================= */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  background: white;
+  border-radius: 20px;
+}
+
+body.dark .empty-state {
+  background: #1e293b;
+}
+
+.empty-state p {
+  color: #64748b;
+  margin-bottom: 20px;
+}
+
+body.dark .empty-state p {
+  color: #94a3b8;
+}
+
+.primary-btn {
+  padding: 10px 24px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+/* ================= LOADING STATE ================= */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: 20px;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #e2e8f0;
+  border-top-color: #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+body.dark .spinner {
+  border-color: #334155;
+  border-top-color: #667eea;
+}
+
+/* ================= ANIMATIONS ================= */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1024px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .student-dashboard {
+    padding: calc(70px + 20px) 20px 40px 20px;
+  }
+  
+  .welcome-section h1 {
+    font-size: 24px;
+  }
+  
+  .jobs-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .stat-card {
+    padding: 20px;
+  }
+  
+  .stat-icon {
+    font-size: 40px;
+  }
+  
+  .stat-info h3 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .student-dashboard {
+    padding: calc(70px + 15px) 15px 30px 15px;
+  }
+  
+  .job-card {
+    padding: 16px;
+  }
+}

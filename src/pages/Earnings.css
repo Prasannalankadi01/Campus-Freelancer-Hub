@@ -1,0 +1,322 @@
+/* src/pages/Earnings.css */
+
+.earnings-container {
+  min-height: 100vh;
+  background: var(--bg-primary);
+  padding: 32px 24px;
+}
+
+.earnings-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.earnings-content h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 32px;
+  background: linear-gradient(135deg, var(--text-primary), #fbbf24);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Total Earnings Card */
+.total-earnings-card {
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  border-radius: 24px;
+  padding: 32px;
+  text-align: center;
+  margin-bottom: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+body:not(.dark) .total-earnings-card {
+  background: linear-gradient(135deg, #ffffff, #f8fafc);
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+}
+
+.total-earnings-card:hover {
+  transform: translateY(-4px);
+}
+
+.total-label {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.total-amount {
+  font-size: 56px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 8px;
+}
+
+.total-sub {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+/* Earnings Sections */
+.earnings-section {
+  margin-bottom: 40px;
+}
+
+.earnings-section h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.earnings-section h2::before {
+  content: '';
+  width: 4px;
+  height: 20px;
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  border-radius: 2px;
+}
+
+/* Earnings List */
+.earnings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.earning-item {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.4s ease forwards;
+  opacity: 0;
+}
+
+.earning-item:hover {
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.earning-item.pending {
+  border-left: 4px solid #f59e0b;
+}
+
+.earning-item.completed {
+  border-left: 4px solid #10b981;
+}
+
+.earning-info {
+  flex: 1;
+}
+
+.earning-info h4 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 6px 0;
+  color: var(--text-primary);
+}
+
+.earning-info p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.earning-amount {
+  font-size: 24px;
+  font-weight: 700;
+  color: #10b981;
+  margin-left: 16px;
+}
+
+.earning-item.pending .earning-amount {
+  color: #f59e0b;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 48px 24px;
+  background: var(--card-bg);
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+}
+
+.empty-state p {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin: 0;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+.loading-spinner::after {
+  content: '';
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--border-color);
+  border-top-color: #f59e0b;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Stagger animations */
+.earning-item:nth-child(1) { animation-delay: 0.05s; }
+.earning-item:nth-child(2) { animation-delay: 0.1s; }
+.earning-item:nth-child(3) { animation-delay: 0.15s; }
+.earning-item:nth-child(4) { animation-delay: 0.2s; }
+.earning-item:nth-child(5) { animation-delay: 0.25s; }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .earnings-container {
+    padding: 20px 16px;
+  }
+  
+  .earnings-content h1 {
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+  
+  .total-earnings-card {
+    padding: 24px;
+  }
+  
+  .total-amount {
+    font-size: 40px;
+  }
+  
+  .earning-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+    padding: 16px;
+  }
+  
+  .earning-amount {
+    margin-left: 0;
+  }
+  
+  .earnings-section h2 {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .total-amount {
+    font-size: 32px;
+  }
+  
+  .earning-info h4 {
+    font-size: 16px;
+  }
+  
+  .earning-amount {
+    font-size: 20px;
+  }
+}
+
+/* Dark mode specific adjustments */
+body.dark .earning-item {
+  background: rgba(30, 41, 59, 0.8);
+}
+
+body.dark .empty-state {
+  background: rgba(30, 41, 59, 0.8);
+}
+
+/* Light mode specific adjustments */
+body:not(.dark) .earning-item {
+  background: #ffffff;
+}
+
+body:not(.dark) .empty-state {
+  background: #ffffff;
+}
+
+/* Chart/Graph styles (if you add charts later) */
+.earnings-chart {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 32px;
+  border: 1px solid var(--border-color);
+}
+
+.earnings-chart h3 {
+  font-size: 16px;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+}
+
+/* Withdrawal section (optional) */
+.withdrawal-section {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-color);
+}
+
+.withdrawal-btn {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  width: 100%;
+  max-width: 200px;
+}
+
+.withdrawal-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.withdrawal-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
