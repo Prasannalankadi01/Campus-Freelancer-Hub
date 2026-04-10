@@ -451,7 +451,8 @@ body.dark {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #0f172a, #1e3a8a, #2563eb);
+  background: linear-gradient(90deg, #0f2c67, #1c4ed8);
+
 }
 
 .auth-box {
